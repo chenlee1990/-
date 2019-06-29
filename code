@@ -1,13 +1,22 @@
+#导入bs4,requests,openpyxl,time,re
 from  bs4 import BeautifulSoup
 import requests,openpyxl,time,string,re
 t = time.time()
 
-url = 'https://www.tripadvisor.cn/Attractions-g60763-Activities-New_York_City_New_York.html'
+#原始页面，taipdviso上的数据
+#使用str.format以及列表表达式，对url进行循环取值
 urls=['https://www.tripadvisor.cn/Attractions-g60763-Activities-oa{}-New_York_City_New_York.html#FILTERED_LIST'\
           .format(str(i)) for i in range(30,930,30)]
-def get_attractions(url,data=None):
+
+#定义函数get_attractions,传入一个网址，对其进行解析
+def get_attractions(url,data=None)
+#使用request.get()返回一个值
     wb_data = requests.get(url)
+#使用beautfulsoup对其进行解析
+
     soup = BeautifulSoup(wb_data.text,'lxml')
+    
+#得到titles()
     titles = soup.select('div.listing_title >a[target="_blank"]')
     talks = soup.select(' div > div > div > div.listing_info > div > div > div > span.more > a')
     datas = []
